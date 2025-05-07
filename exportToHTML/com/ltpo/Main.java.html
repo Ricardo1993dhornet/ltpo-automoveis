@@ -1,0 +1,64 @@
+<html>
+<head>
+<title>Main.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #808080;}
+.s3 { color: #6a8759;}
+.s4 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Main.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.ltpo</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.util.List</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">com.ltpo.DAO.AutomovelDAO</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.ltpo.DAO.ModeloDAO</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.ltpo.model.Automovel</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.ltpo.model.Modelo</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">Main {</span>
+    <span class="s0">public static void </span><span class="s1">main(String[] args){</span>
+        <span class="s1">AutomovelDAO automovelDAO = </span><span class="s0">new </span><span class="s1">AutomovelDAO()</span><span class="s0">;</span>
+        <span class="s1">ModeloDAO modeloDAO = </span><span class="s0">new </span><span class="s1">ModeloDAO()</span><span class="s0">;</span>
+
+<span class="s2">// Inserir um novo usuário.</span>
+        <span class="s1">Modelo modelo = </span><span class="s0">new </span><span class="s1">Modelo(</span><span class="s3">&quot;Argo&quot;</span><span class="s0">, </span><span class="s3">&quot;Fiat&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">Automovel automovel = </span><span class="s0">new </span><span class="s1">Automovel(</span><span class="s3">&quot;Fiat Argo&quot;</span><span class="s0">, </span><span class="s4">2023</span><span class="s0">, </span><span class="s3">&quot;Vermelho&quot;</span><span class="s1">)</span><span class="s0">;</span>
+
+        <span class="s1">automovelDAO.salvar(automovel)</span><span class="s0">;</span>
+        <span class="s1">modeloDAO.salvar(modelo)</span><span class="s0">;</span>
+
+
+        <span class="s1">System.out.println(</span><span class="s3">&quot;Automóvel inserido: &quot; </span><span class="s1">+ automovel)</span><span class="s0">;</span>
+        <span class="s1">System.out.println(</span><span class="s3">&quot;Modelo inserido: &quot; </span><span class="s1">+ modelo)</span><span class="s0">;</span>
+
+<span class="s2">// Buscar todos os automóveis</span>
+
+        <span class="s1">List&lt;Automovel&gt; automoveis = automovelDAO.buscarTodos()</span><span class="s0">;</span>
+        <span class="s1">List&lt;Modelo&gt; modelos = modeloDAO.buscarTodos()</span><span class="s0">;</span>
+        <span class="s1">System.out.println(</span><span class="s3">&quot;</span><span class="s0">\n</span><span class="s3">Todos os automóveis:&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">for </span><span class="s1">(Automovel a : automoveis) {</span>
+            <span class="s1">System.out.println(a)</span><span class="s0">;</span>
+<span class="s2">// Buscar um usuário por ID</span>
+            <span class="s1">Automovel automovelBuscado = automovelDAO.buscarPorId(</span><span class="s4">1</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">System.out.println(</span><span class="s3">&quot;</span><span class="s0">\n</span><span class="s3">Automóvel com ID 1: &quot; </span><span class="s1">+ automovelBuscado)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+        <span class="s1">System.out.println(</span><span class="s3">&quot;</span><span class="s0">\n</span><span class="s3">Todos os modelos: &quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">for </span><span class="s1">(Modelo m : modelos){</span>
+            <span class="s1">System.out.println(m)</span><span class="s0">;</span>
+            <span class="s1">Modelo modeloBuscado = modeloDAO.buscarPorId(</span><span class="s4">1</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">System.out.println(</span><span class="s3">&quot;</span><span class="s0">\n</span><span class="s3">Modelo com ID 1: &quot; </span><span class="s1">+ modeloBuscado)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>
