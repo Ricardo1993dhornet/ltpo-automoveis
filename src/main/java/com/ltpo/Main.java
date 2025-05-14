@@ -4,41 +4,47 @@ import java.util.List;
 
 import com.ltpo.DAO.AutomovelDAO;
 import com.ltpo.DAO.ModeloDAO;
-import com.ltpo.model.Automovel;
-import com.ltpo.model.Modelo;
+import com.ltpo.DAO.UsuarioDAO;
+import com.ltpo.enums.Cor;
+import com.ltpo.enums.Tipo;
+import com.ltpo.model.*;
 
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         AutomovelDAO automovelDAO = new AutomovelDAO();
         ModeloDAO modeloDAO = new ModeloDAO();
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
 
-// Inserir um novo usuário.
         Modelo modelo = new Modelo("Argo", "Fiat");
-        Automovel automovel = new Automovel("Fiat Argo", 2023, "Vermelho");
+        Usuario usuario = new Usuario("João da Silva", "11999999999", Tipo.CLIENTE);
+        Automovel automovel = new Automovel("Fiat Argo", 2023, Cor.VERMELHO);
 
-        automovelDAO.salvar(automovel);
-        modeloDAO.salvar(modelo);
+        automovel.setModelo(modelo);
+        automovel.setUsuario(usuario);
+        usuario.adicionarAutomovel(automovel);
 
+        usuarioDAO.salvar(usuario); // Salva tudo em cascata
 
+        System.out.println("Usuário inserido: " + usuario);
         System.out.println("Automóvel inserido: " + automovel);
         System.out.println("Modelo inserido: " + modelo);
 
-// Buscar todos os automóveis
-
         List<Automovel> automoveis = automovelDAO.buscarTodos();
-        List<Modelo> modelos = modeloDAO.buscarTodos();
         System.out.println("\nTodos os automóveis:");
         for (Automovel a : automoveis) {
             System.out.println(a);
-// Buscar um usuário por ID
-            Automovel automovelBuscado = automovelDAO.buscarPorId(1);
-            System.out.println("\nAutomóvel com ID 1: " + automovelBuscado);
         }
-        System.out.println("\nTodos os modelos: ");
-        for (Modelo m : modelos){
+
+        List<Modelo> modelos = modeloDAO.buscarTodos();
+        System.out.println("\nTodos os modelos:");
+        for (Modelo m : modelos) {
             System.out.println(m);
-            Modelo modeloBuscado = modeloDAO.buscarPorId(1);
-            System.out.println("\nModelo com ID 1: " + modeloBuscado);
         }
+
+        Automovel automovelBuscado = automovelDAO.buscarPorId(1);
+        System.out.println("\nAutomóvel com ID 1: " + automovelBuscado);
+
+        Modelo modeloBuscado = modeloDAO.buscarPorId(1);
+        System.out.println("\nModelo com ID 1: " + modeloBuscado);
     }
 }

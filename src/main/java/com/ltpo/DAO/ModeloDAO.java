@@ -13,7 +13,7 @@ public class ModeloDAO {
     }
 
     public ModeloDAO(){
-        emf = Persistence.createEntityManagerFactory("automovelPU");
+        emf = Persistence.createEntityManagerFactory("oficinaPU");
         EntityManager em = getEntityManager();
     }
 

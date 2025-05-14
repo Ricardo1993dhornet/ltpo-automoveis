@@ -10,7 +10,7 @@
 
 
 
-    <persistence-unit name="automovelPU">
+    <persistence-unit name="oficinaPU">
 
         <class>com.ltpo.model.Automovel</class>
 
@@ -28,9 +28,6 @@
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
 
 
-
-
-
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
 
             <property name="hibernate.hbm2ddl.auto" value="update"/>
@@ -38,34 +35,8 @@
         </properties>
 
     </persistence-unit>
-    <persistence-unit name="modeloPU">
-
-        <class>com.ltpo.model.Modelo</class>
-
-        <properties>
-
-            <!-- ali no "value" você coloca as informações do banco que você criou no my sql
-             o meu se chama ltpo e usa port 3307. OBS.: SE O SEU É DIFERENTE, COLOQUE COMO ESTÁ O SEU.-->
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/ltpo"/>
 
 
-            <property name="jakarta.persistence.jdbc.user" value="root"/>
-
-            <property name="jakarta.persistence.jdbc.password" value=""/>
-
-            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-
-
-
-
-
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
-
-            <property name="hibernate.hbm2ddl.auto" value="update"/>
-
-        </properties>
-
-    </persistence-unit>
 
 
 </persistence>
